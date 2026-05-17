@@ -24,7 +24,7 @@ const SOCIALS = [
   {
     icon: <FaLinkedin />,
     label: 'LinkedIn',
-    href: 'https://linkedin.com/in/huzaifamumtaz',
+    href: 'https://www.linkedin.com/in/huzaifa-mumtaz-99b985343',
   },
   {
     icon: <FaXTwitter />,
