@@ -1,4 +1,10 @@
 import React, { useState } from 'react'
+import {
+  FaGithub,
+  FaLinkedin,
+  FaXTwitter,
+  FaEnvelope,
+} from 'react-icons/fa6'
 import useInView from '../hooks/useInView'
 import SectionTitle from './SectionTitle'
 import '../styles/components.css'
@@ -10,11 +16,23 @@ const CONTACT_INFO = [
 ]
 
 const SOCIALS = [
-  { icon: '🐙', label: 'GitHub',   href: 'https://github.com/Zaifa25' },
-  { icon: '💼', label: 'LinkedIn', href: 'https://www.linkedin.com/in/huzaifa-mumtaz-99b985343' },
-  { icon: '🐦', label: 'Twitter',  href: '#' },
+  {
+    icon: <FaGithub />,
+    label: 'GitHub',
+    href: 'https://github.com/Zaifa25',
+  },
+  {
+    icon: <FaLinkedin />,
+    label: 'LinkedIn',
+    href: 'https://linkedin.com/in/huzaifamumtaz',
+  },
+  {
+    icon: <FaXTwitter />,
+    label: 'Twitter',
+    href: 'https://twitter.com/huzaifamumtaz',
+  },
+ 
 ]
-
 const inputStyle = {
   width: '100%',
   background: 'rgba(255, 255, 255, 0.03)',

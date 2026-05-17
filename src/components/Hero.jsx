@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import {
+  FaGithub,
+  FaLinkedin,
+  FaXTwitter,
+  FaEnvelope,
+} from 'react-icons/fa6'
 import '../styles/hero.css'
 import '../styles/components.css'
 
@@ -9,10 +15,26 @@ const ROLES = [
 ]
 
 const SOCIALS = [
-  { icon: '🐙', label: 'GitHub', href: 'https://github.com/Zaifa25' },
-  { icon: '💼', label: 'LinkedIn', href: 'https://linkedin.com/in/huzaifamumtaz' },
-  { icon: '🐦', label: 'Twitter', href: 'https://twitter.com/huzaifamumtaz' },
-  { icon: '✉️', label: 'Email', href: 'mailto:huzaifamumtaz@example.com' },
+  {
+    icon: <FaGithub />,
+    label: 'GitHub',
+    href: 'https://github.com/Zaifa25',
+  },
+  {
+    icon: <FaLinkedin />,
+    label: 'LinkedIn',
+    href: 'https://linkedin.com/in/huzaifamumtaz',
+  },
+  {
+    icon: <FaXTwitter />,
+    label: 'Twitter',
+    href: 'https://twitter.com/huzaifamumtaz',
+  },
+  {
+    icon: <FaEnvelope />,
+    label: 'Email',
+    href: 'mailto:huzaifamumtaz@example.com',
+  },
 ]
 
 function TypeWriter({ words }) {
@@ -127,9 +149,9 @@ export default function Hero() {
                   className="profile-image"
                 />
               </div>
-              <div className="floating-badge badge-react">Web Dev ⚛️</div>
-              <div className="floating-badge badge-node">DevOps 🛠️</div>
-              <div className="floating-badge badge-mongo">AI Automation 🤖</div>
+              <div className="floating-badge badge-react">Web Dev</div>
+              <div className="floating-badge badge-node">DevOps</div>
+              <div className="floating-badge badge-mongo">AI Automation</div>
             </div>
           </div>
 

@@ -1,15 +1,36 @@
 import React from 'react'
+import {
+  FaGithub,
+  FaLinkedin,
+  FaXTwitter,
+  FaEnvelope,
+} from 'react-icons/fa6'
 import '../styles/components.css'
 
 const NAV_LINKS = ['Home', 'About', 'Skills', 'Projects', 'Services', 'Journey', 'Contact']
 
 const SOCIALS = [
-  { icon: '🐙', label: 'GitHub',   href: 'https://github.com/Zaifa25' },
-  { icon: '💼', label: 'LinkedIn', href: 'https://www.linkedin.com/in/huzaifa-mumtaz-99b985343' },
-  { icon: '🐦', label: 'Twitter',  href: '#' },
-  { icon: '✉️', label: 'Email',    href: 'mailto:huzaifamumtaz.work@gmail.com' },
+  {
+    icon: <FaGithub />,
+    label: 'GitHub',
+    href: 'https://github.com/Zaifa25',
+  },
+  {
+    icon: <FaLinkedin />,
+    label: 'LinkedIn',
+    href: 'https://linkedin.com/in/huzaifamumtaz',
+  },
+  {
+    icon: <FaXTwitter />,
+    label: 'Twitter',
+    href: 'https://twitter.com/huzaifamumtaz',
+  },
+  {
+    icon: <FaEnvelope />,
+    label: 'Email',
+    href: 'mailto:huzaifamumtaz@example.com',
+  },
 ]
-
 export default function Footer() {
   const scrollTo = (id) => {
     document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })
