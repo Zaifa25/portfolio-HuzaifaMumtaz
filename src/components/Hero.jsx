@@ -3,10 +3,9 @@ import '../styles/hero.css'
 import '../styles/components.css'
 
 const ROLES = [
-  'MERN Stack Developer',
-  'Frontend Engineer',
-  'React Specialist',
-  'UI/UX Enthusiast',
+  'AI Automation',
+  'Web Developer',
+  'Flutter Developer',
 ]
 
 const SOCIALS = [
