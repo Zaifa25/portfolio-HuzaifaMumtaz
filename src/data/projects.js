@@ -5,8 +5,8 @@ const PROJECTS = [
     tech: ['React', 'Node.js', 'OpenAI', 'MongoDB'],
     image: 'public/assets/project4.png',
     gradient: 'linear-gradient(135deg, #0D0D0D, #191919)',
-    demo: '#',
-    github: '#',
+    demo: 'https://github.com/Zaifa25/ChatBot-Huzaifa-Portfolio-.git',
+    github: 'https://github.com/Zaifa25/ChatBot-Huzaifa-Portfolio-.git',
   },
   {
     title: 'ZAIFA AI Assistant',
@@ -14,7 +14,7 @@ const PROJECTS = [
     tech: ['Flutter', 'Dart', 'N8n', 'Webhook'],
     image: 'public/assets/project2.png',
     gradient: 'linear-gradient(135deg, #111111, #1C1C1C)',
-    demo: '#',
+    demo: 'https://github.com/Zaifa25/ZAIFA-AI-Assistant.git',
     github: 'https://github.com/Zaifa25/ZAIFA-AI-Assistant.git',
   },
   {
@@ -23,8 +23,8 @@ const PROJECTS = [
     tech: ['Unreal Engine 5', 'C++', 'Blueprints',],
     image: 'public/assets/project3.png',
     gradient: 'linear-gradient(135deg, #141414, #1F1F1F)',
-    demo: '#',
-    github: '#',
+    demo: 'https://zaifa25.github.io/Echoes-of-Isolation/',
+    github: 'https://github.com/Zaifa25/Echoes-of-Isolation.git',
   },
 
   {
@@ -33,8 +33,8 @@ const PROJECTS = [
     tech: ['Html', 'CSS', 'JavaScript', 'Bootstrap'],
     image: 'public/assets/project1.png',
     gradient: 'linear-gradient(135deg, #0F0F0F, #1A1A1A)',
-    demo: '#',
-    github: '#',
+    demo: 'https://zaifa25.github.io/Echoes-of-Isolation/',
+    github: 'https://github.com/Zaifa25/Echoes-of-Isolation.git',
   },
   {
     title: 'Friendly AI Chatbot',
@@ -43,16 +43,16 @@ const PROJECTS = [
     image: 'public/assets/project5.png',
     gradient: 'linear-gradient(135deg, #101010, #1A1A1A)',
     demo: '#',
-    github: '#',
+    github: 'https://github.com/Zaifa25/Friendly-ChatBot.git',
   },
   {
-    title: 'Friendly Portfolio',
+    title: 'Portfolio-Website',
     desc: 'A fully responsive developer portfolio showcasing projects, skills, and professional experience with a clean modern aesthetic.',
     tech: ['React', 'HTML', 'CSS3', 'Vite', 'JavaScript'],
     image: 'public/assets/project6.png',
     gradient: 'linear-gradient(135deg, #0F0F0F, #181818)',
     demo: '#',
-    github: '#',
+    github: 'https://github.com/Zaifa25/portfolio-HuzaifaMumtaz.git',
   },
 ]
 
