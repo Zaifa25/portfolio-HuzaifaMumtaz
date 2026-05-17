@@ -122,7 +122,7 @@ export default function Hero() {
               <div className="avatar-ring-outer" />
               <div className="avatar-circle">
                 <img
-                  src="public/assets/profile.jpg"
+                  src="/assets/profile.jpg"
                   alt="Profile"
                   className="profile-image"
                 />
