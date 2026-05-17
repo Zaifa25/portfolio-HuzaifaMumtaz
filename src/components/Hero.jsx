@@ -91,10 +91,7 @@ export default function Hero() {
 
           {/* ── Left: Text ── */}
           <div style={{ animation: 'fadeInUp 0.8s ease both' }}>
-            <div className="available-badge">
-              <span className="available-dot" />
-              <span className="available-text">Available for Hire</span>
-            </div>
+            
 
             <h1 className="hero-heading">
               Hi, I'm
