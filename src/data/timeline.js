@@ -17,26 +17,25 @@ const TIMELINE = [
     desc: 'Dived deep into the React ecosystem — hooks, routing, and state management.',
     side: 'left',
   },
-  
+
   {
     year: '2025',
     title: 'Full Stack Development',
     desc: 'Added php, laravel. Launched first full-stack application.',
     side: 'right',
   },
- {
-  year: '2025',
-  title: 'AI Automation',
-  desc: 'Building intelligent automation workflows using n8n, webhooks, APIs, and AI-powered integrations to streamline business processes and improve productivity.',
-  side: 'left',
-},
+  {
+    year: '2025',
+    title: 'AI Automation',
+    desc: 'Building intelligent automation workflows using n8n, webhooks, APIs, and AI-powered integrations to streamline business processes and improve productivity.',
+    side: 'left',
+  },
   {
     year: '2026',
-    title: 'Learning MERN',
-    desc: 'Delivered 15+ client projects. Gained expertise in real-world deployment.',
+    title: 'Learning MERN Stack',
+    desc: 'Currently learning MongoDB, Express.js, and Node.js while building modern full-stack web applications and improving backend development skills.',
     side: 'right',
   },
-  
 ]
 
 export default TIMELINE
