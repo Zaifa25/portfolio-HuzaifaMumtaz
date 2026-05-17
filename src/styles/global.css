@@ -1,0 +1,165 @@
+/* ─── Google Fonts ─── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap');
+
+/* ─── Reset & Base ─── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; }
+img { max-width: 100%; display: block; }
+
+/* ─── CSS Variables ─── */
+:root {
+  /* Core Backgrounds */
+  --bg:              #050505;
+  --bg-deep:         #020202;
+  --bg-surface:      #0F0F0F;
+  --bg-surface-2:    #171717;
+  --bg-card:         rgba(255, 255, 255, 0.028);
+  --bg-card-hover:   rgba(255, 255, 255, 0.055);
+  --bg-alt:          rgba(15, 15, 15, 0.9);
+  --bg-glass:        rgba(10, 10, 10, 0.88);
+
+  /* Text */
+  --text:            #F5F1E8;
+  --text-muted:      #A8A29E;
+  --text-dim:        rgba(168, 162, 158, 0.5);
+  --cream:           #F5F1E8;
+
+  /* Borders */
+  --border:          rgba(255, 255, 255, 0.08);
+  --border-strong:   rgba(255, 255, 255, 0.13);
+  --border-hover:    rgba(214, 199, 178, 0.22);
+  --border-accent:   rgba(214, 199, 178, 0.18);
+
+  /* Accent — warm cream/sand */
+  --accent:          #D6C7B2;
+  --accent-warm:     #C4B49A;
+  --accent-light:    #E8DDCC;
+  --accent-glow:     rgba(214, 199, 178, 0.1);
+
+  /* Legacy compat aliases */
+  --plum:            #1A1A1A;
+  --slate:           #2A2A2A;
+  --crimson:         #D6C7B2;
+
+  /* Gradients */
+  --gradient:        linear-gradient(135deg, #D6C7B2 0%, #A8A29E 100%);
+  --gradient-alt:    linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+  --gradient-warm:   linear-gradient(135deg, #F5F1E8 0%, #D6C7B2 100%);
+  --gradient-full:   linear-gradient(135deg, #F5F1E8, #D6C7B2, #A8A29E);
+}
+
+/* ─── Keyframes ─── */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.85); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-11px); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes spin-reverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(22px, -16px) scale(1.02); }
+  66% { transform: translate(-16px, 12px) scale(0.98); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-2%, 0); }
+  40% { transform: translate(0, -2%); }
+  50% { transform: translate(2%, 0); }
+  60% { transform: translate(-1%, 2%); }
+  70% { transform: translate(1%, -1%); }
+  80% { transform: translate(-2%, 1%); }
+  90% { transform: translate(2%, -2%); }
+}
+
+/* ─── Film grain overlay ─── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 9998;
+  animation: grain 8s steps(10) infinite;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: rgba(214, 199, 178, 0.18); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(214, 199, 178, 0.38); }
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(214, 199, 178, 0.16);
+  color: var(--cream);
+}
+
+/* ─── Utility Classes ─── */
+.gradient-text {
+  background: var(--gradient-warm);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cream-text {
+  background: var(--gradient-warm);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-padding { padding: 7rem 2rem; }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}

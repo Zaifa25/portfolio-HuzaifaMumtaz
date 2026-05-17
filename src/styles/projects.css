@@ -1,0 +1,173 @@
+.projects-section {
+  padding: 7rem 2rem;
+  position: relative;
+  background: var(--bg-surface);
+}
+
+.projects-section::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(214, 199, 178, 0.04), transparent 70%);
+  pointer-events: none;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(214,199,178,0.06);
+  background: var(--bg-card-hover);
+}
+
+.project-banner {
+  position: relative;
+  height: 155px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-surface-2);
+}
+
+.project-emoji {
+  font-size: 3rem;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.5));
+  transition: transform 0.45s ease;
+  opacity: 0.85;
+}
+
+.project-card:hover .project-emoji {
+  transform: scale(1.1) rotate(-4deg);
+  opacity: 1;
+}
+
+.project-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, rgba(5, 5, 5, 0.7));
+}
+
+.project-body {
+  padding: 1.6rem 1.5rem;
+  display: flex;
+flex-direction: column;
+flex: 1;
+}
+
+.project-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.project-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+  font-weight: 300;
+  flex: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.4rem;
+}
+
+.tech-tag {
+  font-size: 0.68rem;
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  padding: 0.22rem 0.65rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .tech-tag {
+  border-color: rgba(214, 199, 178, 0.14);
+  color: var(--text-muted);
+}
+
+.project-actions {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.project-btn-demo {
+  flex: 1;
+  text-align: center;
+  padding: 0.65rem 1rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border-strong);
+  color: var(--cream);
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 0.35s ease;
+}
+
+.project-btn-demo:hover {
+  background: rgba(214,199,178,0.08);
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+}
+
+.project-btn-github {
+  flex: 1;
+  text-align: center;
+  padding: 0.65rem 1rem;
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 0.35s ease;
+}
+
+.project-btn-github:hover {
+  border-color: var(--border-hover);
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.03);
+}
+
+@media (max-width: 700px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}

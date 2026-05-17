@@ -1,0 +1,148 @@
+import React, { useState, useEffect } from 'react'
+import '../styles/hero.css'
+import '../styles/components.css'
+
+const ROLES = [
+  'MERN Stack Developer',
+  'Frontend Engineer',
+  'React Specialist',
+  'UI/UX Enthusiast',
+]
+
+const SOCIALS = [
+  { icon: '🐙', label: 'GitHub', href: 'https://github.com/Zaifa25' },
+  { icon: '💼', label: 'LinkedIn', href: 'https://linkedin.com/in/huzaifamumtaz' },
+  { icon: '🐦', label: 'Twitter', href: 'https://twitter.com/huzaifamumtaz' },
+  { icon: '✉️', label: 'Email', href: 'mailto:huzaifamumtaz@example.com' },
+]
+
+function TypeWriter({ words }) {
+  const [text, setText] = useState('')
+  const [wordIdx, setWordIdx] = useState(0)
+  const [charIdx, setCharIdx] = useState(0)
+  const [deleting, setDeleting] = useState(false)
+
+  useEffect(() => {
+    const current = words[wordIdx]
+    const speed = deleting ? 55 : 115
+
+    const timer = setTimeout(() => {
+      if (!deleting) {
+        setText(current.slice(0, charIdx + 1))
+        if (charIdx + 1 === current.length) {
+          setTimeout(() => setDeleting(true), 1300)
+          return
+        }
+        setCharIdx(c => c + 1)
+      } else {
+        setText(current.slice(0, charIdx - 1))
+        if (charIdx - 1 === 0) {
+          setDeleting(false)
+          setWordIdx(i => (i + 1) % words.length)
+          return
+        }
+        setCharIdx(c => c - 1)
+      }
+    }, speed)
+
+    return () => clearTimeout(timer)
+  }, [text, wordIdx, charIdx, deleting, words])
+
+  return (
+    <span style={{ color: 'var(--accent-light)' }}>
+      {text}
+      <span className="typewriter-cursor">|</span>
+    </span>
+  )
+}
+
+export default function Hero() {
+  return (
+    <section id="home" className="hero">
+      <div className="orb orb-1" />
+      <div className="orb orb-2" />
+      <div className="orb orb-3" />
+      <div className="grid-overlay" />
+      <div className="hero-corner-deco" />
+
+      <div className="hero-inner">
+        <div className="hero-grid">
+
+          {/* ── Left: Text ── */}
+          <div style={{ animation: 'fadeInUp 0.8s ease both' }}>
+            <div className="available-badge">
+              <span className="available-dot" />
+              <span className="available-text">Available for Hire</span>
+            </div>
+
+            <h1 className="hero-heading">
+              Hi, I'm
+              <span className="hero-name">Huzaifa Mumtaz</span>
+            </h1>
+
+            <p className="hero-typewriter">
+              <TypeWriter words={ROLES} />
+            </p>
+
+            <p className="hero-desc">
+              Final semester Computer Science student at COMSATS University Islamabad, (graduating June 2026) with a strong interest in AI Automation, Web Development, and DevOps. I enjoy building responsive web applications, automation workflows, and scalable software solutions that solve real-world problems.
+            </p>
+
+            <div className="hero-cta">
+              <button
+                className="btn-primary"
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                View Projects →
+              </button>
+              <a className="btn-outline" href="/assets/cv.pdf" download>
+                Download CV ↓
+              </a>
+            </div>
+
+            <div className="hero-socials">
+              {SOCIALS.map(s => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  title={s.label}
+                  className="social-icon"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Right: Avatar ── */}
+          <div className="avatar-wrapper" style={{ animation: 'fadeInUp 0.8s ease 0.2s both' }}>
+            <div className="avatar-container">
+              <div className="avatar-ring" />
+              <div className="avatar-ring-outer" />
+              <div className="avatar-circle">
+                <img
+                  src="public/assets/profile.jpg"
+                  alt="Profile"
+                  className="profile-image"
+                />
+              </div>
+              <div className="floating-badge badge-react">Web Dev ⚛️</div>
+              <div className="floating-badge badge-node">DevOps 🛠️</div>
+              <div className="floating-badge badge-mongo">AI Automation 🤖</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="scroll-indicator">
+        <div className="scroll-mouse">
+          <div className="scroll-dot" />
+        </div>
+        <span className="scroll-label">Scroll</span>
+      </div>
+    </section>
+  )
+}
