@@ -11,7 +11,7 @@ import '../styles/components.css'
 const ROLES = [
   'AI Automation',
   'Web Developer',
-  'Flutter Developer',
+  'DevOps Enthusiast',
 ]
 
 const SOCIALS = [
