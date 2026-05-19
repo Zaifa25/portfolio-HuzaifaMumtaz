@@ -10,8 +10,8 @@ import SectionTitle from './SectionTitle'
 import '../styles/components.css'
 
 const CONTACT_INFO = [
-  { icon: '✉️', label: 'Email',    value: 'huzaifamumtaz.work@gmail.com' },
-  { icon: '📞', label: 'Phone',    value: '+92 3265415612' },
+  { icon: '✉️', label: 'Email', value: 'huzaifamumtaz.work@gmail.com' },
+  { icon: '📞', label: 'Phone', value: '+92 3265415612' },
   { icon: '📍', label: 'Location', value: 'Islamabad, Pakistan' },
 ]
 
@@ -31,7 +31,7 @@ const SOCIALS = [
     label: 'Twitter',
     href: 'https://twitter.com/huzaifamumtaz',
   },
- 
+
 ]
 const inputStyle = {
   width: '100%',
@@ -49,21 +49,39 @@ const inputStyle = {
 
 export default function Contact() {
   const [ref, inView] = useInView()
-  const [form, setForm]   = useState({ name: '', email: '', message: '' })
-  const [sent, setSent]   = useState(false)
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [sent, setSent] = useState(false)
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleChange = e => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    if (!form.name || !form.email || !form.message) {
-      setError('Please fill in all fields.')
-      return
-    }
-    setError('')
-    setSent(true)
+  const handleSubmit = async e => {
+  e.preventDefault()
+  if (!form.name || !form.email || !form.message) {
+    setError('Please fill in all fields.')
+    return
   }
+  setError('')
+  setLoading(true)   // ← ADD THIS
+
+  try {
+    const res = await fetch('https://formspree.io/f/xgoqvggg', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(form),
+    })
+    if (res.ok) {
+      setSent(true)
+    } else {
+      setError('Something went wrong. Please try again.')
+    }
+  } catch {
+    setError('Network error. Please try again.')
+  }
+
+  setLoading(false)  // ← ADD THIS
+}
 
   return (
     <section id="contact" style={{ padding: '7rem 2rem', position: 'relative', background: 'var(--bg-surface)' }} ref={ref}>
@@ -85,7 +103,7 @@ export default function Contact() {
         }}>
           {/* ── Left: Info ── */}
           <div style={{
-            opacity:   inView ? 1 : 0,
+            opacity: inView ? 1 : 0,
             transform: inView ? 'none' : 'translateX(-36px)',
             transition: 'all 0.75s cubic-bezier(0.16, 1, 0.3, 1)',
           }}>
@@ -137,7 +155,7 @@ export default function Contact() {
 
           {/* ── Right: Form ── */}
           <div style={{
-            opacity:   inView ? 1 : 0,
+            opacity: inView ? 1 : 0,
             transform: inView ? 'none' : 'translateX(36px)',
             transition: 'all 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.2s',
           }}>
@@ -165,8 +183,8 @@ export default function Contact() {
                 }}
               >
                 {[
-                  { name: 'name',  label: 'Your Name',      type: 'text',  placeholder: 'John Doe' },
-                  { name: 'email', label: 'Email Address',  type: 'email', placeholder: 'john@example.com' },
+                  { name: 'name', label: 'Your Name', type: 'text', placeholder: 'John Doe' },
+                  { name: 'email', label: 'Email Address', type: 'email', placeholder: 'john@example.com' },
                 ].map(f => (
                   <div key={f.name} style={{ marginBottom: '1.3rem' }}>
                     <label style={{ display: 'block', color: 'var(--text-dim)', fontSize: '0.7rem', marginBottom: 8, fontWeight: 400, letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: "'DM Mono', monospace" }}>
@@ -217,8 +235,8 @@ export default function Contact() {
                   <p style={{ color: 'var(--accent)', fontSize: '0.82rem', marginBottom: '1rem', opacity: 0.8 }}>{error}</p>
                 )}
 
-                <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                  Send Message →
+                <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }} disabled={loading}>
+                  {loading ? 'Sending...' : 'Send Message →'}
                 </button>
               </form>
             )}
