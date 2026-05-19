@@ -11,7 +11,7 @@ import '../styles/components.css'
 
 const CONTACT_INFO = [
   { icon: '✉️', label: 'Email',    value: 'huzaifamumtaz.work@gmail.com' },
-  { icon: '📞', label: 'Phone',    value: '+92 3411447038' },
+  { icon: '📞', label: 'Phone',    value: '+92 3265415612' },
   { icon: '📍', label: 'Location', value: 'Islamabad, Pakistan' },
 ]
 

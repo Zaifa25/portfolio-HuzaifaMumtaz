@@ -39,7 +39,7 @@ const PROJECTS = [
   {
     title: 'Friendly AI Chatbot',
     desc: 'A modern AI-powered chatbot built with HTML, CSS, JavaScript, and n8n workflows. This chatbot provides natural and friendly conversations using AI models like Google Gemini/OpenAI through webhook automation.',
-    tech: ['HTML', 'CSS3', 'JavaScript', 'n8n', 'Webhook', 'OpenAI API'],
+    tech: ['HTML', 'CSS3', 'JavaScript', 'Bootstrap', 'n8n', 'Webhook', 'OpenAI API'],
     image: '/assets/project5.png',
     gradient: 'linear-gradient(135deg, #101010, #1A1A1A)',
     demo: '#',
