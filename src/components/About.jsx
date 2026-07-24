@@ -66,15 +66,16 @@ export default function About() {
             </h3>
 
             <p style={{ color: 'var(--text-muted)', lineHeight: 1.95, marginBottom: '1rem', fontSize: '0.92rem', fontWeight: 300 }}>
-              I’m a Full-Stack Developer and AI Automation Enthusiast dedicated to
-              transforming complex ideas into scalable, real-world digital solutions. As a final-year Computer Science student at
-              COMSATS University Islamabad (expected graduation: June 2026), I specialize in building modern web applications, intelligent automation systems,
-              and high-performance software solutions that deliver seamless user experiences.
+              I’m a Full-Stack Developer and AI Automation Enthusiast dedicated to transforming complex ideas into scalable, real-world digital solutions. As a Computer Science graduate from COMSATS University Islamabad, I specialize in building modern web applications, intelligent automation systems, and high-performance software solutions that deliver seamless user experiences.
+
+              My expertise spans frontend and backend development using HTML, CSS, Bootstrap, JavaScript, React, Next.js, PostgreSQL, MySQL, and REST APIs, along with AI-powered automation workflows using n8n and modern web technologies. I enjoy creating responsive interfaces, automation systems, chatbot solutions, and scalable applications with clean architecture, optimized performance, and user-focused design.
+
+              I’m passionate about continuous learning, solving real-world challenges, and leveraging emerging technologies to build innovative software that delivers measurable impact. I thrive in collaborative environments and am eager to contribute to teams developing cutting-edge web, automation, AI-driven, and cloud-based solutions.
             </p>
 
-            <p style={{ color: 'var(--text-muted)', lineHeight: 1.95, marginBottom: '2.5rem', fontSize: '0.92rem', fontWeight: 300 }}>
+            {/* <p style={{ color: 'var(--text-muted)', lineHeight: 1.95, marginBottom: '2.5rem', fontSize: '0.92rem', fontWeight: 300 }}>
               My expertise spans frontend and backend development using HTML, CSS, Bootstrap, JavaScript, React, PHP, and Laravel, along with AI-powered automation workflows using n8n and advanced web technologies. I enjoy creating responsive interfaces, automation systems, chatbot solutions, and scalable applications with clean architecture, optimized performance, and user-focused design.
-            </p>
+            </p> */}
 
             {/* Stats */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.7rem' }}>

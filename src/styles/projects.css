@@ -171,3 +171,118 @@ flex: 1;
     grid-template-columns: 1fr;
   }
 }
+
+/* ─── Filter Tabs ─── */
+.projects-filter {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.6rem;
+  margin-top: -0.5rem;
+}
+
+.filter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1.1rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-tab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-glow);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.filter-tab:hover {
+  border-color: var(--border-hover);
+  color: var(--cream);
+  transform: translateY(-2px);
+}
+
+.filter-tab:hover::before {
+  opacity: 1;
+}
+
+.filter-tab--active {
+  background: linear-gradient(135deg, rgba(214,199,178,0.14), rgba(214,199,178,0.06));
+  border-color: rgba(214,199,178,0.45);
+  color: var(--cream);
+  box-shadow: 0 0 18px rgba(214,199,178,0.08);
+}
+
+.filter-tab--active::before {
+  opacity: 1;
+}
+
+.filter-tab-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.filter-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 100px;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  transition: all 0.3s ease;
+}
+
+.filter-tab--active .filter-tab-count {
+  background: rgba(214,199,178,0.14);
+  color: var(--accent);
+}
+
+/* ─── Category Badge on Card ─── */
+.project-category-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
+  background: rgba(10,10,10,0.82);
+  border: 1px solid rgba(214,199,178,0.18);
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+  padding: 3px 9px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+}
+
+/* Make card relative so badge positions correctly */
+.project-card {
+  position: relative;
+}
+
+/* ─── Empty state ─── */
+.projects-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-dim);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+}
+

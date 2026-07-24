@@ -5,13 +5,14 @@ import About from './components/About'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Services from './components/Services'
-import Journey from './components/Journey'
+import Experience from './components/Experience'
+import Achievements from './components/Achievements'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import ChatBot from './components/ChatBot'
 
-const NAV_LINKS = ['Home', 'About', 'Skills', 'Projects', 'Services', 'Journey', 'Contact']
+const NAV_LINKS = ['Home', 'About', 'Experience', 'Achievements', 'Skills', 'Projects', 'Services', 'Contact']
 
 export default function App() {
   const [active, setActive] = useState('home')
@@ -37,10 +38,11 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <Experience />
+        <Achievements />
         <Skills />
         <Projects />
         <Services />
-        <Journey />
         <Contact />
       </main>
       <Footer />

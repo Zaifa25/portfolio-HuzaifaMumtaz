@@ -91,7 +91,7 @@ export default function Hero() {
 
           {/* ── Left: Text ── */}
           <div style={{ animation: 'fadeInUp 0.8s ease both' }}>
-            
+
 
             <h1 className="hero-heading">
               Hi, I'm
@@ -103,7 +103,8 @@ export default function Hero() {
             </p>
 
             <p className="hero-desc">
-              Final semester Computer Science student at COMSATS University Islamabad, (graduating June 2026) with a strong interest in AI Automation, Web Development, and DevOps. I enjoy building responsive web applications, automation workflows, and scalable software solutions that solve real-world problems.
+              Computer Science graduate from COMSATS University Islamabad with a strong interest in AI Automation, Web Development, and DevOps. Passionate about building responsive web applications, automation workflows, and scalable software solutions that solve real-world problems.
+
             </p>
 
             <div className="hero-cta">
