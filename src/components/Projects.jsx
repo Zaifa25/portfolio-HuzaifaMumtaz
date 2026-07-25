@@ -90,7 +90,8 @@ export default function Projects() {
                     href={project.demo}
                     className="project-btn-demo"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
+                    title={`View live demo of ${project.title}`}
                   >
                     Live Demo
                   </a>
@@ -98,7 +99,8 @@ export default function Projects() {
                     href={project.github}
                     className="project-btn-github"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
+                    title={`View ${project.title} on GitHub`}
                   >
                     GitHub
                   </a>
