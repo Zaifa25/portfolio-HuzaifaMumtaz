@@ -7,7 +7,7 @@ import {
 } from 'react-icons/fa6'
 import '../styles/components.css'
 
-const NAV_LINKS = ['Home', 'About', 'Skills', 'Projects', 'Services', 'Journey', 'Contact']
+const NAV_LINKS = ['Home', 'About', 'Experience', 'Achievements', 'Skills', 'Projects', 'Services', 'Contact']
 
 const SOCIALS = [
   {
