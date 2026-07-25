@@ -164,3 +164,11 @@ body::after {
   margin: 0 auto;
   width: 100%;
 }
+
+/* ─── Keyboard Focus Ring ─── */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid rgba(214, 199, 178, 0.5);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
