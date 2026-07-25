@@ -36,13 +36,21 @@ export default function App() {
     <>
       <Navbar active={active} navLinks={NAV_LINKS} />
       <main>
+        {/* ── Hero ── */}
         <Hero />
+        {/* ── About ── */}
         <About />
+        {/* ── Experience ── */}
         <Experience />
+        {/* ── Achievements ── */}
         <Achievements />
+        {/* ── Skills ── */}
         <Skills />
+        {/* ── Projects ── */}
         <Projects />
+        {/* ── Services ── */}
         <Services />
+        {/* ── Contact ── */}
         <Contact />
       </main>
       <Footer />
