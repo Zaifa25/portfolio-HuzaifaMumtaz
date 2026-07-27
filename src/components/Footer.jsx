@@ -94,7 +94,7 @@ export default function Footer() {
         {/* Social icons */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '0.55rem', marginBottom: '2.5rem' }}>
           {SOCIALS.map(s => (
-            <a key={s.label} href={s.href} title={s.label} target="_blank" rel="noopener noreferrer" className="social-icon" style={{ width: 36, height: 36, fontSize: 15 }}>
+            <a key={s.label} href={s.href} title={s.label} aria-label={s.label} target="_blank" rel="noopener noreferrer" className="social-icon" style={{ width: 36, height: 36, fontSize: 15 }}>
               {s.icon}
             </a>
           ))}

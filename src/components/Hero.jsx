@@ -125,9 +125,10 @@ export default function Hero() {
                   key={s.label}
                   href={s.href}
                   title={s.label}
+                  aria-label={s.label}
                   className="social-icon"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   {s.icon}
                 </a>
