@@ -172,3 +172,22 @@ body::after {
   outline-offset: 3px;
   border-radius: 3px;
 }
+
+/* ─── Accessibility & Print Styles ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  body::after { display: none; }
+  .scroll-indicator { display: none !important; }
+  body { background: #ffffff !important; color: #000000 !important; }
+}
+
