@@ -155,14 +155,14 @@ export default function About() {
                 <span style={{ paddingLeft: 28 }}>
                   <span style={{ color: '#F87171' }}>"role"</span>
                   <span style={{ color: '#A8A29E' }}>: </span>
-                  <span style={{ color: '#86EFAC' }}>"CS Student"</span>
+                  <span style={{ color: '#86EFAC' }}>"CS Graduate"</span>
                   <span style={{ color: '#A8A29E' }}>,</span>
                 </span><br />
 
                 <span style={{ paddingLeft: 28 }}>
                   <span style={{ color: '#F87171' }}>"university"</span>
                   <span style={{ color: '#A8A29E' }}>: </span>
-                  <span style={{ color: '#86EFAC' }}>"COMSATS University"</span>
+                  <span style={{ color: '#86EFAC' }}>"COMSATS University Islamabad"</span>
                   <span style={{ color: '#A8A29E' }}>,</span>
                 </span><br />
 
