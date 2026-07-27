@@ -127,7 +127,10 @@ export default function ChatBot() {
           </div>
 
           {/* Messages */}
-          <div style={{
+          <div
+            aria-live="polite"
+            aria-label="Chat messages history"
+            style={{
             flex: 1,
             overflowY: 'auto',
             padding: '16px 14px',
@@ -313,6 +316,7 @@ export default function ChatBot() {
 
       {/* Floating Button */}
       <button
+        aria-label={open ? "Close AI Chat Assistant" : "Open AI Chat Assistant"}
         onClick={() => setOpen(o => !o)}
         style={{
           position: 'fixed',
