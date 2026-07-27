@@ -146,7 +146,7 @@ export default function Contact() {
 
             <div style={{ display: 'flex', gap: '0.55rem', marginTop: '1.8rem' }}>
               {SOCIALS.map(s => (
-                <a key={s.label} href={s.href} title={s.label} className="social-icon">
+                <a key={s.label} href={s.href} title={s.label} aria-label={s.label} target="_blank" rel="noopener noreferrer" className="social-icon">
                   {s.icon}
                 </a>
               ))}
