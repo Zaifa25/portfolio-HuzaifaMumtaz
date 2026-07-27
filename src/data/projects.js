@@ -61,4 +61,4 @@ const PROJECTS = [
   },
 ]
 
-export default PROJECTS
+export default Object.freeze(PROJECTS)
