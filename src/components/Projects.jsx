@@ -5,7 +5,7 @@ import PROJECTS from '../data/projects'
 import '../styles/projects.css'
 import '../styles/components.css'
 
-const CATEGORIES = ['All', 'Web', 'App', 'Game', 'n8n']
+const CATEGORIES = ['All', 'Web', 'App', 'Game', 'n8n', 'Extension']
 
 const CATEGORY_ICONS = {
   All: '⚡',
@@ -13,6 +13,7 @@ const CATEGORY_ICONS = {
   App: '📱',
   Game: '🎮',
   n8n: '🔗',
+  Extension: '🧩',
 }
 
 export default function Projects() {
