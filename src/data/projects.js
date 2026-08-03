@@ -22,6 +22,7 @@ const PROJECTS = [
   {
     title: 'Echoes Of Isolation — GAME (FYP)',
     category: 'Game',
+    featured: true,
     desc: 'A voice-responsive paranormal horror game developed in Unreal Engine 5, featuring immersive survival gameplay, dynamic enemy AI, ritual mechanics, and psychological horror elements.',
     tech: ['Unreal Engine 5', 'C++', 'Blueprints'],
     image: '/assets/project3.png',
@@ -62,6 +63,7 @@ const PROJECTS = [
   {
     title: 'Hospital Management System',
     category: 'Web',
+    featured: true,
     desc: 'A modern, full-stack Hospital Management System (HMS) built with Next.js 15, React 19, Tailwind CSS v4, Express, Prisma ORM, and PostgreSQL. Features role-based access control, analytics, scheduling, and billing systems.',
     tech: ['Next.js', 'React', 'PostgreSQL', 'Prisma', 'Express', 'Tailwind CSS'],
     image: '/assets/project7.png',
@@ -82,6 +84,7 @@ const PROJECTS = [
   {
     title: 'Google Maps Leads Extractor',
     category: 'Extension',
+    featured: true,
     desc: 'A Chrome Extension (React + Bootstrap 5 + Manifest V3) that extracts business leads from Google Maps — name, address, phone, website, email — with auto-scroll scraping, duplicate detection, live progress tracking, and CSV/Excel export.',
     tech: ['React', 'Bootstrap 5', 'Manifest V3', 'Chrome API', 'CSV Export'],
     image: '/assets/project9.png',

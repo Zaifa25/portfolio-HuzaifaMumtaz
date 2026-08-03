@@ -271,18 +271,505 @@ flex: 1;
   backdrop-filter: blur(6px);
 }
 
-/* Make card relative so badge positions correctly */
-.project-card {
-  position: relative;
+/* Featured Badge Ribbon */
+.project-featured-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 3;
+  background: linear-gradient(135deg, rgba(214, 199, 178, 0.25), rgba(214, 199, 178, 0.12));
+  border: 1px solid rgba(214, 199, 178, 0.4);
+  color: var(--cream);
+  font-size: 0.65rem;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 100px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px rgba(214, 199, 178, 0.15);
 }
 
-/* ─── Empty state ─── */
+.project-card--featured {
+  border-color: rgba(214, 199, 178, 0.25);
+}
+
+/* Image Hover & Quick View Overlay */
+.project-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.06);
+}
+
+.project-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 5, 0.6);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.project-card:hover .project-image-overlay {
+  opacity: 1;
+}
+
+.project-quick-view-btn {
+  padding: 0.5rem 1.1rem;
+  background: rgba(214, 199, 178, 0.18);
+  border: 1px solid rgba(214, 199, 178, 0.45);
+  color: var(--cream);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-family: 'DM Mono', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: translateY(10px);
+}
+
+.project-card:hover .project-quick-view-btn {
+  transform: translateY(0);
+}
+
+.project-quick-view-btn:hover {
+  background: rgba(214, 199, 178, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Header row & Share button */
+.project-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.project-header-row .project-title {
+  margin-bottom: 0;
+}
+
+.project-share-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-dim);
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.project-share-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--cream);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Interactive Tech Tags */
+.tech-tag {
+  cursor: pointer;
+}
+
+.tech-tag:hover {
+  border-color: rgba(214, 199, 178, 0.35);
+  color: var(--cream);
+  background: rgba(214, 199, 178, 0.06);
+}
+
+.tech-tag--active {
+  background: rgba(214, 199, 178, 0.18);
+  border-color: rgba(214, 199, 178, 0.5);
+  color: var(--cream);
+}
+
+/* Toolbar: Search & Sort Controls */
+.projects-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.projects-search-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 260px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  pointer-events: none;
+}
+
+.projects-search-input {
+  width: 100%;
+  padding: 0.65rem 2.2rem 0.65rem 2.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--cream);
+  font-size: 0.82rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.projects-search-input:focus {
+  outline: none;
+  border-color: var(--border-hover);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 16px rgba(214, 199, 178, 0.06);
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.search-clear-btn:hover {
+  color: var(--cream);
+}
+
+.projects-sort-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-label {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-family: 'DM Mono', monospace;
+}
+
+.projects-sort-select {
+  padding: 0.62rem 1rem;
+  background: rgba(15, 15, 15, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--cream);
+  font-size: 0.8rem;
+  font-family: 'DM Mono', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.projects-sort-select:focus {
+  outline: none;
+  border-color: var(--border-hover);
+}
+
+/* Active Tag Filter Bar */
+.active-tag-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: rgba(214, 199, 178, 0.06);
+  border: 1px dashed rgba(214, 199, 178, 0.25);
+  border-radius: 6px;
+  margin-bottom: 1.25rem;
+  font-size: 0.8rem;
+  color: var(--cream);
+}
+
+.remove-tag-filter-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-family: 'DM Mono', monospace;
+}
+
+.remove-tag-filter-btn:hover {
+  text-decoration: underline;
+}
+
+/* Status Bar & Reset */
+.projects-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.projects-count-summary strong {
+  color: var(--cream);
+}
+
+.projects-reset-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.35rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: 'DM Mono', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.projects-reset-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--cream);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Toast Banner */
+.projects-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(214, 199, 178, 0.4);
+  color: var(--cream);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-family: 'DM Mono', monospace;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  animation: toastSlideIn 0.35s ease forwards;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Empty State Polish */
 .projects-empty {
   text-align: center;
   padding: 4rem 2rem;
-  color: var(--text-dim);
-  font-family: 'DM Mono', monospace;
-  font-size: 0.82rem;
-  letter-spacing: 0.06em;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  margin-top: 1rem;
 }
+
+.empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.empty-title {
+  font-size: 1rem;
+  color: var(--cream);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.empty-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+}
+
+.empty-reset-btn {
+  display: inline-block;
+}
+
+/* Modal Quick View Styling */
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.project-modal-content {
+  position: relative;
+  background: #0f0f0f;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  max-width: 650px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+  animation: modalScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalScale {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border);
+  color: var(--cream);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.08);
+}
+
+.modal-image-wrapper {
+  position: relative;
+  height: 240px;
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-category-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid rgba(214, 199, 178, 0.25);
+  color: var(--cream);
+  font-size: 0.7rem;
+  font-family: 'DM Mono', monospace;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.modal-featured-badge {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, rgba(214, 199, 178, 0.3), rgba(214, 199, 178, 0.15));
+  border: 1px solid rgba(214, 199, 178, 0.45);
+  color: var(--cream);
+  font-size: 0.7rem;
+  font-family: 'DM Mono', monospace;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.modal-body {
+  padding: 1.75rem;
+}
+
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+}
+
+.modal-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.modal-tech-section h4 {
+  font-size: 0.75rem;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+
+.modal-tech-tag {
+  cursor: default;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 1.75rem;
+}
+
+.modal-btn {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.85rem;
+}
+
+.modal-share-btn {
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-family: 'DM Mono', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-share-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--cream);
+  background: rgba(255, 255, 255, 0.03);
+}
+
 
