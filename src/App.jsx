@@ -11,6 +11,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import ChatBot from './components/ChatBot'
+import TriangleBackground from './components/TriangleBackground'
 
 const NAV_LINKS = ['Home', 'About', 'Experience', 'Achievements', 'Skills', 'Projects', 'Services', 'Contact']
 
@@ -33,9 +34,12 @@ export default function App() {
   }, [])
 
   return (
-    <>
+    <div style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* ── Animated Background Triangles ── */}
+      <TriangleBackground />
+
       <Navbar active={active} navLinks={NAV_LINKS} />
-      <main>
+      <main style={{ position: 'relative', zIndex: 1 }}>
         {/* ── Hero ── */}
         <Hero />
         {/* ── About ── */}
@@ -56,6 +60,6 @@ export default function App() {
       <Footer />
       <ScrollToTop />
       <ChatBot />
-    </>
+    </div>
   )
 }

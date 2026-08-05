@@ -35,8 +35,8 @@ img { max-width: 100%; display: block; }
   /* Core Backgrounds */
   --bg:              #050505;
   --bg-deep:         #020202;
-  --bg-surface:      #0F0F0F;
-  --bg-surface-2:    #171717;
+  --bg-surface:      rgba(15, 15, 15, 0.82);
+  --bg-surface-2:    rgba(23, 23, 23, 0.82);
   --bg-card:         rgba(255, 255, 255, 0.028);
   --bg-card-hover:   rgba(255, 255, 255, 0.055);
   --bg-alt:          rgba(15, 15, 15, 0.9);
