@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { FaArrowUp } from 'react-icons/fa6'
 import '../styles/components.css'
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setVisible(window.scrollY > 500)
+    const handleScroll = () => setVisible(window.scrollY > 400)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -18,7 +19,7 @@ export default function ScrollToTop() {
       aria-label="Scroll to top"
       className="scroll-to-top-btn"
     >
-      ↑
+      <FaArrowUp />
     </button>
   )
 }
