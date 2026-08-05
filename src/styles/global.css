@@ -90,11 +90,11 @@ img { max-width: 100%; display: block; }
   --text-dim:        #64748B;
   --cream:           #0F172A;
 
-  /* Borders */
-  --border:          rgba(15, 23, 42, 0.08);
-  --border-strong:   rgba(15, 23, 42, 0.16);
-  --border-hover:    rgba(197, 139, 56, 0.35);
-  --border-accent:   rgba(197, 139, 56, 0.25);
+  /* Borders - Clearly visible in Light Mode */
+  --border:          rgba(15, 23, 42, 0.14);
+  --border-strong:   rgba(15, 23, 42, 0.22);
+  --border-hover:    rgba(197, 139, 56, 0.45);
+  --border-accent:   rgba(197, 139, 56, 0.35);
 
   /* Accent — warm soft gold */
   --accent:          #C58B38;
@@ -122,14 +122,31 @@ img { max-width: 100%; display: block; }
   color: #0F172A;
 }
 
+/* Light mode card border visibility across all sections */
+[data-theme="light"] .project-card,
+[data-theme="light"] .skill-card,
+[data-theme="light"] .service-card,
+[data-theme="light"] .achievement-card,
+[data-theme="light"] .experience-card,
+[data-theme="light"] .stat-card,
+[data-theme="light"] .contact-form-card,
+[data-theme="light"] .social-icon,
+[data-theme="light"] .available-badge,
 [data-theme="light"] .hover-lift {
-  border: 1px solid rgba(15, 23, 42, 0.08) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+  background: #FFFFFF !important;
+  border: 1px solid rgba(15, 23, 42, 0.15) !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.05) !important;
 }
 
+[data-theme="light"] .project-card:hover,
+[data-theme="light"] .skill-card:hover,
+[data-theme="light"] .service-card:hover,
+[data-theme="light"] .achievement-card:hover,
+[data-theme="light"] .experience-card:hover,
+[data-theme="light"] .social-icon:hover,
 [data-theme="light"] .hover-lift:hover {
-  border-color: rgba(197, 139, 56, 0.35) !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-color: rgba(197, 139, 56, 0.45) !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.06) !important;
 }
 
 /* ─── Keyframes ─── */

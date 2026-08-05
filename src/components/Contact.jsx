@@ -33,20 +33,6 @@ const SOCIALS = [
   },
 
 ]
-const inputStyle = {
-  width: '100%',
-  background: 'rgba(255, 255, 255, 0.03)',
-  border: '1px solid rgba(255, 255, 255, 0.08)',
-  borderRadius: 4,
-  padding: '12px 16px',
-  color: 'var(--cream)',
-  fontSize: '0.9rem',
-  outline: 'none',
-  fontFamily: "'DM Sans', inherit",
-  boxSizing: 'border-box',
-  transition: 'border-color 0.3s ease, background 0.3s ease',
-}
-
 export default function Contact() {
   const [ref, inView] = useInView()
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -57,31 +43,31 @@ export default function Contact() {
   const handleChange = e => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
 
   const handleSubmit = async e => {
-  e.preventDefault()
-  if (!form.name || !form.email || !form.message) {
-    setError('Please fill in all fields.')
-    return
-  }
-  setError('')
-  setLoading(true)   // ← ADD THIS
-
-  try {
-    const res = await fetch('https://formspree.io/f/xgoqvggg', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(form),
-    })
-    if (res.ok) {
-      setSent(true)
-    } else {
-      setError('Something went wrong. Please try again.')
+    e.preventDefault()
+    if (!form.name || !form.email || !form.message) {
+      setError('Please fill in all fields.')
+      return
     }
-  } catch {
-    setError('Network error. Please try again.')
-  }
+    setError('')
+    setLoading(true)
 
-  setLoading(false)  // ← ADD THIS
-}
+    try {
+      const res = await fetch('https://formspree.io/f/xgoqvggg', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (res.ok) {
+        setSent(true)
+      } else {
+        setError('Something went wrong. Please try again.')
+      }
+    } catch {
+      setError('Network error. Please try again.')
+    }
+
+    setLoading(false)
+  }
 
   return (
     <section id="contact" style={{ padding: '7rem 2rem', position: 'relative', background: 'transparent', zIndex: 2 }} ref={ref}>
@@ -131,7 +117,7 @@ export default function Contact() {
                 <div style={{
                   width: 44, height: 44, borderRadius: 6, flexShrink: 0,
                   background: 'var(--bg-card)',
-                  border: '1px solid var(--border)',
+                  border: '1px solid var(--border-strong)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: 18, opacity: 0.8,
                 }}>
@@ -160,9 +146,9 @@ export default function Contact() {
             transition: 'all 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.2s',
           }}>
             {sent ? (
-              <div style={{
+              <div className="contact-form-card" style={{
                 background: 'var(--bg-card)',
-                border: '1px solid var(--border)',
+                border: '1px solid var(--border-strong)',
                 borderRadius: 8, padding: '3.5rem', textAlign: 'center',
               }}>
                 <div style={{ fontSize: 48, marginBottom: '1rem', opacity: 0.8 }}>✅</div>
@@ -175,9 +161,10 @@ export default function Contact() {
             ) : (
               <form
                 onSubmit={handleSubmit}
+                className="contact-form-card"
                 style={{
                   background: 'var(--bg-surface-2)',
-                  border: '1px solid var(--border)',
+                  border: '1px solid var(--border-strong)',
                   borderRadius: 8, padding: '2.2rem',
                   backdropFilter: 'blur(12px)',
                   position: 'relative',
@@ -198,15 +185,7 @@ export default function Contact() {
                       placeholder={f.placeholder}
                       value={form[f.name]}
                       onChange={handleChange}
-                      style={inputStyle}
-                      onFocus={e => {
-                        e.target.style.borderColor = 'rgba(214, 199, 178, 0.25)'
-                        e.target.style.background = 'rgba(255,255,255,0.05)'
-                      }}
-                      onBlur={e => {
-                        e.target.style.borderColor = 'rgba(255, 255, 255, 0.08)'
-                        e.target.style.background = 'rgba(255, 255, 255, 0.03)'
-                      }}
+                      className="contact-input"
                     />
                   </div>
                 ))}
@@ -221,20 +200,12 @@ export default function Contact() {
                     placeholder="Tell me about your project..."
                     value={form.message}
                     onChange={handleChange}
-                    style={{ ...inputStyle, resize: 'vertical' }}
-                    onFocus={e => {
-                      e.target.style.borderColor = 'rgba(214, 199, 178, 0.25)'
-                      e.target.style.background = 'rgba(255,255,255,0.05)'
-                    }}
-                    onBlur={e => {
-                      e.target.style.borderColor = 'rgba(255, 255, 255, 0.08)'
-                      e.target.style.background = 'rgba(255, 255, 255, 0.03)'
-                    }}
+                    className="contact-input contact-textarea"
                   />
                 </div>
 
                 {error && (
-                  <p style={{ color: 'var(--accent)', fontSize: '0.82rem', marginBottom: '1rem', opacity: 0.8 }}>{error}</p>
+                  <p style={{ color: 'var(--accent)', fontSize: '0.82rem', marginBottom: '1rem', opacity: 0.9 }}>{error}</p>
                 )}
 
                 <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }} disabled={loading}>
