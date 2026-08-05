@@ -58,6 +58,16 @@ export default function ProfessionalBackground() {
     const draw = () => {
       ctx.clearRect(0, 0, width, height)
 
+      // Render interactive mouse spotlight aura (Linear/Vercel luxury spotlight effect)
+      if (mouse.x !== null && mouse.y !== null) {
+        const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 250)
+        gradient.addColorStop(0, 'rgba(214, 199, 178, 0.09)')
+        gradient.addColorStop(0.5, 'rgba(214, 199, 178, 0.025)')
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)')
+        ctx.fillStyle = gradient
+        ctx.fillRect(0, 0, width, height)
+      }
+
       // Update & render constellation particles & thread connections
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i]
