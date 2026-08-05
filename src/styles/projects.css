@@ -1,7 +1,7 @@
 .projects-section {
   padding: 7rem 2rem;
   position: relative;
-  background: var(--bg-surface);
+  background: transparent;
 }
 
 .projects-section::before {

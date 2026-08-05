@@ -51,7 +51,7 @@ export default function Experience() {
       ref={ref}
       style={{
         padding: '7rem 2rem',
-        background: 'var(--bg)',
+        background: 'transparent',
         position: 'relative',
         overflow: 'hidden',
       }}

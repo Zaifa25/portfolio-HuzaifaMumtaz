@@ -24,7 +24,7 @@ export default function Achievements() {
       ref={ref}
       style={{
         padding: '7rem 2rem',
-        background: 'var(--bg)',
+        background: 'transparent',
         position: 'relative',
         overflow: 'hidden',
       }}

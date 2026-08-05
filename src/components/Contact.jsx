@@ -84,7 +84,7 @@ export default function Contact() {
 }
 
   return (
-    <section id="contact" style={{ padding: '7rem 2rem', position: 'relative', background: 'var(--bg-surface)' }} ref={ref}>
+    <section id="contact" style={{ padding: '7rem 2rem', position: 'relative', background: 'transparent' }} ref={ref}>
       <div style={{
         position: 'absolute',
         bottom: '20%', right: 0,

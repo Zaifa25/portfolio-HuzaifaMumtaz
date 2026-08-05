@@ -6,7 +6,7 @@
   height: 100vh;
   overflow: hidden;
   pointer-events: none;
-  z-index: 5; /* Positioned above section background colors so it is clearly visible */
+  z-index: 0; /* Strictly behind all sections */
 }
 
 .particle-canvas {

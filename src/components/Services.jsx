@@ -7,7 +7,7 @@ export default function Services() {
   const [ref, inView] = useInView()
 
   return (
-    <section id="services" style={{ padding: '7rem 2rem', position: 'relative', background: 'var(--bg-surface)' }} ref={ref}>
+    <section id="services" style={{ padding: '7rem 2rem', position: 'relative', background: 'transparent' }} ref={ref}>
       <div style={{
         position: 'absolute',
         bottom: 0, left: 0,

@@ -21,7 +21,7 @@ export default function About() {
   return (
     <section id="about" ref={ref} style={{
       padding: '7rem 2rem',
-      background: 'var(--bg-surface)',
+      background: 'transparent',
       position: 'relative',
     }}>
       {/* Subtle side accent */}
