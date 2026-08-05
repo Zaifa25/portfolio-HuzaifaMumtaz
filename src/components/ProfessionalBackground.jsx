@@ -24,23 +24,26 @@ export default function ProfessionalBackground() {
 
     window.addEventListener('resize', handleResize, { passive: true })
 
-    // Pure Constellation Particle Configuration
-    const particleCount = Math.min(Math.floor(width / 40), 32)
+    // Expanded Constellation & Micro-Star Dot Pool (75 particles)
+    const particleCount = Math.min(Math.floor(width / 18), 75)
     const particles = []
 
     for (let i = 0; i < particleCount; i++) {
+      const isGlowing = i % 5 === 0 // 1 in 5 particles is a glowing pulse node
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
         vx: (Math.random() - 0.5) * 0.45,
         vy: (Math.random() - 0.5) * 0.45,
-        radius: Math.random() * 1.8 + 1,
+        radius: isGlowing ? Math.random() * 2.5 + 1.5 : Math.random() * 1.6 + 0.8,
         alpha: Math.random() * 0.45 + 0.35,
+        glow: isGlowing,
+        pulseAngle: Math.random() * Math.PI * 2,
       })
     }
 
     // Mouse tracking for interactive connection
-    let mouse = { x: null, y: null, maxDist: 150 }
+    let mouse = { x: null, y: null, maxDist: 160 }
 
     const handleMouseMove = (e) => {
       mouse.x = e.clientX
@@ -58,9 +61,9 @@ export default function ProfessionalBackground() {
     const draw = () => {
       ctx.clearRect(0, 0, width, height)
 
-      // Render interactive mouse spotlight aura (Linear/Vercel luxury spotlight effect)
+      // Render interactive mouse spotlight aura
       if (mouse.x !== null && mouse.y !== null) {
-        const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 250)
+        const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 260)
         gradient.addColorStop(0, 'rgba(214, 199, 178, 0.09)')
         gradient.addColorStop(0.5, 'rgba(214, 199, 178, 0.025)')
         gradient.addColorStop(1, 'rgba(0, 0, 0, 0)')
@@ -68,21 +71,31 @@ export default function ProfessionalBackground() {
         ctx.fillRect(0, 0, width, height)
       }
 
-      // Update & render constellation particles & thread connections
+      // Update & render expanded constellation dot particles & thread connections
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i]
         p.x += p.vx
         p.y += p.vy
+        p.pulseAngle += 0.03
 
         // Bounce off screen edges
         if (p.x < 0 || p.x > width) p.vx *= -1
         if (p.y < 0 || p.y > height) p.vy *= -1
 
-        // Render micro particle node
+        // Core dot node
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(214, 199, 178, ${p.alpha})`
         ctx.fill()
+
+        // Outer soft glow halo for pulse nodes
+        if (p.glow) {
+          const pulseScale = 1 + Math.sin(p.pulseAngle) * 0.35
+          ctx.beginPath()
+          ctx.arc(p.x, p.y, p.radius * 2.4 * pulseScale, 0, Math.PI * 2)
+          ctx.fillStyle = `rgba(214, 199, 178, ${p.alpha * 0.22})`
+          ctx.fill()
+        }
 
         // Connect nearby particles with subtle threads
         for (let j = i + 1; j < particles.length; j++) {
@@ -91,13 +104,13 @@ export default function ProfessionalBackground() {
           const dy = p.y - p2.y
           const dist = Math.sqrt(dx * dx + dy * dy)
 
-          if (dist < 110) {
-            const lineAlpha = (1 - dist / 110) * 0.28
+          if (dist < 105) {
+            const lineAlpha = (1 - dist / 105) * 0.25
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(p2.x, p2.y)
             ctx.strokeStyle = `rgba(214, 199, 178, ${lineAlpha})`
-            ctx.lineWidth = 0.85
+            ctx.lineWidth = 0.8
             ctx.stroke()
           }
         }
