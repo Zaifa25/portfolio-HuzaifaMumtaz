@@ -62,7 +62,7 @@ export default function ProfessionalBackground() {
       ctx.clearRect(0, 0, width, height)
 
       const isLight = document.documentElement.getAttribute('data-theme') === 'light'
-      const rgb = isLight ? '184, 115, 34' : '214, 199, 178'
+      const rgb = isLight ? '180, 83, 9' : '214, 199, 178'
 
       // Render interactive mouse spotlight aura
       if (mouse.x !== null && mouse.y !== null) {
