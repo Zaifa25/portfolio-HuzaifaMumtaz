@@ -21,22 +21,22 @@ export default function ProfessionalBackground() {
     window.addEventListener('resize', handleResize)
 
     // Particle constellation configuration
-    const particleCount = Math.min(Math.floor(width / 22), 55)
+    const particleCount = Math.min(Math.floor(width / 20), 65)
     const particles = []
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        radius: Math.random() * 1.8 + 1,
-        alpha: Math.random() * 0.5 + 0.25,
+        vx: (Math.random() - 0.5) * 0.55,
+        vy: (Math.random() - 0.5) * 0.55,
+        radius: Math.random() * 2.2 + 1.2,
+        alpha: Math.random() * 0.5 + 0.4,
       })
     }
 
     // Mouse tracking for interactive connection
-    let mouse = { x: null, y: null, maxDist: 150 }
+    let mouse = { x: null, y: null, maxDist: 180 }
 
     const handleMouseMove = (e) => {
       mouse.x = e.clientX
@@ -64,12 +64,12 @@ export default function ProfessionalBackground() {
         if (p.x < 0 || p.x > width) p.vx *= -1
         if (p.y < 0 || p.y > height) p.vy *= -1
 
-        // Render particle dot
+        // Render particle dot with glowing halo
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(214, 199, 178, ${p.alpha})`
-        ctx.shadowBlur = 8
-        ctx.shadowColor = 'rgba(214, 199, 178, 0.4)'
+        ctx.shadowBlur = 10
+        ctx.shadowColor = 'rgba(214, 199, 178, 0.7)'
         ctx.fill()
 
         // Connect nearby particles
@@ -79,30 +79,30 @@ export default function ProfessionalBackground() {
           const dy = p.y - p2.y
           const dist = Math.sqrt(dx * dx + dy * dy)
 
-          if (dist < 115) {
-            const lineAlpha = (1 - dist / 115) * 0.18
+          if (dist < 135) {
+            const lineAlpha = (1 - dist / 135) * 0.35
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(p2.x, p2.y)
             ctx.strokeStyle = `rgba(214, 199, 178, ${lineAlpha})`
-            ctx.lineWidth = 0.8
+            ctx.lineWidth = 1
             ctx.stroke()
           }
         }
 
-        // Connect to mouse cursor
+        // Connect to mouse cursor with bright glowing beam
         if (mouse.x !== null && mouse.y !== null) {
           const mdx = p.x - mouse.x
           const mdy = p.y - mouse.y
           const mdist = Math.sqrt(mdx * mdx + mdy * mdy)
 
           if (mdist < mouse.maxDist) {
-            const mLineAlpha = (1 - mdist / mouse.maxDist) * 0.35
+            const mLineAlpha = (1 - mdist / mouse.maxDist) * 0.65
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(mouse.x, mouse.y)
             ctx.strokeStyle = `rgba(214, 199, 178, ${mLineAlpha})`
-            ctx.lineWidth = 1
+            ctx.lineWidth = 1.4
             ctx.stroke()
           }
         }
