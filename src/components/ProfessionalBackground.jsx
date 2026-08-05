@@ -24,19 +24,19 @@ export default function ProfessionalBackground() {
 
     window.addEventListener('resize', handleResize, { passive: true })
 
-    // Expanded Constellation & Micro-Star Dot Pool (75 particles)
-    const particleCount = Math.min(Math.floor(width / 18), 75)
+    // Subtle Micro-Star Constellation Pool (42 particles)
+    const particleCount = Math.min(Math.floor(width / 32), 42)
     const particles = []
 
     for (let i = 0; i < particleCount; i++) {
-      const isGlowing = i % 5 === 0 // 1 in 5 particles is a glowing pulse node
+      const isGlowing = i % 6 === 0
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        radius: isGlowing ? Math.random() * 2.5 + 1.5 : Math.random() * 1.6 + 0.8,
-        alpha: Math.random() * 0.45 + 0.35,
+        vx: (Math.random() - 0.5) * 0.38,
+        vy: (Math.random() - 0.5) * 0.38,
+        radius: isGlowing ? Math.random() * 2 + 1.2 : Math.random() * 1.3 + 0.7,
+        alpha: Math.random() * 0.35 + 0.25,
         glow: isGlowing,
         pulseAngle: Math.random() * Math.PI * 2,
       })
