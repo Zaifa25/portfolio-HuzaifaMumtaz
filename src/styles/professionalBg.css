@@ -1,0 +1,81 @@
+/* ─── Ultra-Professional Canvas & Glass Overlay ─── */
+.professional-bg-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Ambient glow orbs in corners */
+.bg-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.08;
+  animation: ambientFloat 18s ease-in-out infinite alternate;
+}
+
+.orb-top-left {
+  top: -10%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(214, 199, 178, 0.7), transparent 70%);
+}
+
+.orb-bottom-right {
+  bottom: -15%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(214, 199, 178, 0.5), transparent 70%);
+  animation-delay: 5s;
+}
+
+@keyframes ambientFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.1); }
+  100% { transform: translate(-30px, 20px) scale(0.95); }
+}
+
+/* Floating Glass Code Emblems */
+.floating-emblem {
+  position: absolute;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--accent);
+  background: rgba(214, 199, 178, 0.04);
+  border: 1px solid rgba(214, 199, 178, 0.15);
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  backdrop-filter: blur(10px);
+  opacity: 0.35;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  animation: emblemFloat 16s ease-in-out infinite alternate;
+}
+
+.emblem-1 { top: 18%; left: 8%; animation-duration: 18s; }
+.emblem-2 { top: 32%; right: 10%; animation-duration: 22s; animation-delay: 2s; }
+.emblem-3 { top: 58%; left: 6%; animation-duration: 20s; animation-delay: 4s; }
+.emblem-4 { top: 75%; right: 12%; animation-duration: 24s; animation-delay: 1s; }
+.emblem-5 { top: 88%; left: 14%; animation-duration: 19s; animation-delay: 3s; }
+
+@keyframes emblemFloat {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.25; }
+  50% { transform: translateY(-28px) rotate(6deg); opacity: 0.45; }
+  100% { transform: translateY(15px) rotate(-4deg); opacity: 0.3; }
+}
