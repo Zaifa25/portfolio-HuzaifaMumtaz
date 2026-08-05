@@ -154,13 +154,6 @@ export default function About() {
                 </span><br />
 
                 <span style={{ paddingLeft: 28 }}>
-                  <span className="code-key">"semester"</span>
-                  <span className="code-punct">: </span>
-                  <span className="code-val-num">8</span>
-                  <span className="code-punct">,</span>
-                </span><br />
-
-                <span style={{ paddingLeft: 28 }}>
                   <span className="code-key">"location"</span>
                   <span className="code-punct">: </span>
                   <span className="code-val-str">"Islamabad, PK"</span>
