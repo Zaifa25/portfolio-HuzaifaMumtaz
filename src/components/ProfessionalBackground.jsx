@@ -7,36 +7,40 @@ export default function ProfessionalBackground() {
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-    const ctx = canvas.getContext('2d')
+    const ctx = canvas.getContext('2d', { alpha: true })
     let animationFrameId
+    let resizeTimeout
 
     let width = (canvas.width = window.innerWidth)
     let height = (canvas.height = window.innerHeight)
 
     const handleResize = () => {
-      width = canvas.width = window.innerWidth
-      height = canvas.height = window.innerHeight
+      clearTimeout(resizeTimeout)
+      resizeTimeout = setTimeout(() => {
+        width = canvas.width = window.innerWidth
+        height = canvas.height = window.innerHeight
+      }, 100)
     }
 
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize, { passive: true })
 
-    // Particle constellation configuration
-    const particleCount = Math.min(Math.floor(width / 20), 65)
+    // Particle constellation configuration (optimized count for 60fps)
+    const particleCount = Math.min(Math.floor(width / 32), 42)
     const particles = []
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.55,
-        vy: (Math.random() - 0.5) * 0.55,
-        radius: Math.random() * 2.2 + 1.2,
-        alpha: Math.random() * 0.5 + 0.4,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
+        radius: Math.random() * 2 + 1,
+        alpha: Math.random() * 0.4 + 0.4,
       })
     }
 
     // Mouse tracking for interactive connection
-    let mouse = { x: null, y: null, maxDist: 180 }
+    let mouse = { x: null, y: null, maxDist: 150 }
 
     const handleMouseMove = (e) => {
       mouse.x = e.clientX
@@ -48,28 +52,32 @@ export default function ProfessionalBackground() {
       mouse.y = null
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('mouseleave', handleMouseLeave)
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    window.addEventListener('mouseleave', handleMouseLeave, { passive: true })
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height)
 
-      // Draw and update particles
+      // Update & render particles (without expensive shadowBlur filters)
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i]
         p.x += p.vx
         p.y += p.vy
 
-        // Bounce off canvas edges
+        // Bounce off edges
         if (p.x < 0 || p.x > width) p.vx *= -1
         if (p.y < 0 || p.y > height) p.vy *= -1
 
-        // Render particle dot with glowing halo
+        // Core dot
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(214, 199, 178, ${p.alpha})`
-        ctx.shadowBlur = 10
-        ctx.shadowColor = 'rgba(214, 199, 178, 0.7)'
+        ctx.fill()
+
+        // Fast outer glow ring (zero CPU shadowBlur penalty)
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, p.radius * 2.2, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(214, 199, 178, ${p.alpha * 0.18})`
         ctx.fill()
 
         // Connect nearby particles
@@ -79,30 +87,30 @@ export default function ProfessionalBackground() {
           const dy = p.y - p2.y
           const dist = Math.sqrt(dx * dx + dy * dy)
 
-          if (dist < 135) {
-            const lineAlpha = (1 - dist / 135) * 0.35
+          if (dist < 115) {
+            const lineAlpha = (1 - dist / 115) * 0.28
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(p2.x, p2.y)
             ctx.strokeStyle = `rgba(214, 199, 178, ${lineAlpha})`
-            ctx.lineWidth = 1
+            ctx.lineWidth = 0.9
             ctx.stroke()
           }
         }
 
-        // Connect to mouse cursor with bright glowing beam
+        // Connect to mouse cursor
         if (mouse.x !== null && mouse.y !== null) {
           const mdx = p.x - mouse.x
           const mdy = p.y - mouse.y
           const mdist = Math.sqrt(mdx * mdx + mdy * mdy)
 
           if (mdist < mouse.maxDist) {
-            const mLineAlpha = (1 - mdist / mouse.maxDist) * 0.65
+            const mLineAlpha = (1 - mdist / mouse.maxDist) * 0.55
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(mouse.x, mouse.y)
             ctx.strokeStyle = `rgba(214, 199, 178, ${mLineAlpha})`
-            ctx.lineWidth = 1.4
+            ctx.lineWidth = 1.2
             ctx.stroke()
           }
         }
@@ -114,6 +122,7 @@ export default function ProfessionalBackground() {
     draw()
 
     return () => {
+      clearTimeout(resizeTimeout)
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseleave', handleMouseLeave)
