@@ -19,9 +19,7 @@ const CATEGORY_ICONS = {
 export default function Projects() {
   const [ref, inView] = useInView()
   const [active, setActive] = useState('All')
-  const [searchQuery, setSearchQuery] = useState('')
   const [selectedTechTag, setSelectedTechTag] = useState('')
-  const [sortBy, setSortBy] = useState('default')
   const [selectedProject, setSelectedProject] = useState(null)
   const [toastMessage, setToastMessage] = useState('')
 
@@ -44,7 +42,7 @@ export default function Projects() {
     })
   }
 
-  // Filtered & Sorted Projects computation
+  // Filtered Projects computation
   const filtered = useMemo(() => {
     let list = [...PROJECTS]
 
@@ -60,36 +58,14 @@ export default function Projects() {
       )
     }
 
-    // Search query filter
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase().trim()
-      list = list.filter(
-        (p) =>
-          p.title.toLowerCase().includes(q) ||
-          p.desc.toLowerCase().includes(q) ||
-          p.tech.some((t) => t.toLowerCase().includes(q))
-      )
-    }
-
-    // Sorting
-    if (sortBy === 'name-asc') {
-      list.sort((a, b) => a.title.localeCompare(b.title))
-    } else if (sortBy === 'name-desc') {
-      list.sort((a, b) => b.title.localeCompare(a.title))
-    } else if (sortBy === 'featured') {
-      list.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
-    }
-
     return list
-  }, [active, selectedTechTag, searchQuery, sortBy])
+  }, [active, selectedTechTag])
 
-  const isFiltered = active !== 'All' || selectedTechTag !== '' || searchQuery !== ''
+  const isFiltered = active !== 'All' || selectedTechTag !== ''
 
   const handleResetFilters = () => {
     setActive('All')
     setSelectedTechTag('')
-    setSearchQuery('')
-    setSortBy('default')
   }
 
   return (
@@ -103,46 +79,6 @@ export default function Projects() {
 
       <div className="container">
         <SectionTitle title="My Projects" sub="Things I've built" />
-
-        {/* ── Toolbar: Search & Sort ── */}
-        <div className="projects-controls">
-          <div className="projects-search-wrapper">
-            <span className="search-icon" aria-hidden="true">🔍</span>
-            <input
-              type="text"
-              className="projects-search-input"
-              placeholder="Search projects by name, tech stack, or description..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              aria-label="Search projects"
-            />
-            {searchQuery && (
-              <button
-                className="search-clear-btn"
-                onClick={() => setSearchQuery('')}
-                aria-label="Clear search query"
-              >
-                ✕
-              </button>
-            )}
-          </div>
-
-          <div className="projects-sort-wrapper">
-            <label htmlFor="projects-sort-select" className="sort-label">Sort by:</label>
-            <select
-              id="projects-sort-select"
-              className="projects-sort-select"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              aria-label="Sort projects"
-            >
-              <option value="default">Default</option>
-              <option value="featured">Featured First ⭐</option>
-              <option value="name-asc">Name (A-Z)</option>
-              <option value="name-desc">Name (Z-A)</option>
-            </select>
-          </div>
-        </div>
 
         {/* ── Filter Tabs ── */}
         <div className="projects-filter" role="tablist" aria-label="Filter projects by category">
