@@ -116,94 +116,80 @@ export default function About() {
             transition: 'all 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.2s',
           }}>
             {/* Editor Window */}
-            <div style={{
-              background: '#0D0D0D',
-              border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: 12,
-              overflow: 'hidden',
-              boxShadow: '0 24px 64px rgba(0,0,0,0.6)',
-              fontFamily: "'DM Mono', monospace",
-            }}>
+            <div className="code-editor-card">
               {/* Title Bar */}
-              <div style={{
-                background: '#161616',
-                padding: '12px 16px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 10,
-                borderBottom: '1px solid rgba(255,255,255,0.06)',
-              }}>
+              <div className="code-title-bar">
                 {/* Traffic lights */}
                 <div style={{ display: 'flex', gap: 6 }}>
                   <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#FF5F57' }} />
                   <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#FFBD2E' }} />
                   <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#28C840' }} />
                 </div>
-                <span style={{ color: '#4b5563', fontSize: '0.8rem', letterSpacing: '0.04em' }}>profile.json</span>
+                <span className="code-title-text">profile.json</span>
               </div>
 
               {/* Code Body */}
               <div style={{ padding: '28px 32px', fontSize: '0.88rem', lineHeight: 2 }}>
-                <span style={{ color: '#A8A29E' }}>{'{'}</span><br />
+                <span className="code-punct">{'{'}</span><br />
 
                 <span style={{ paddingLeft: 28 }}>
-                  <span style={{ color: '#F87171' }}>"name"</span>
-                  <span style={{ color: '#A8A29E' }}>: </span>
-                  <span style={{ color: '#86EFAC' }}>"Muhammad Huzaifa Mumtaz"</span>
-                  <span style={{ color: '#A8A29E' }}>,</span>
+                  <span className="code-key">"name"</span>
+                  <span className="code-punct">: </span>
+                  <span className="code-val-str">"Muhammad Huzaifa Mumtaz"</span>
+                  <span className="code-punct">,</span>
                 </span><br />
 
                 <span style={{ paddingLeft: 28 }}>
-                  <span style={{ color: '#F87171' }}>"role"</span>
-                  <span style={{ color: '#A8A29E' }}>: </span>
-                  <span style={{ color: '#86EFAC' }}>"CS Graduate"</span>
-                  <span style={{ color: '#A8A29E' }}>,</span>
+                  <span className="code-key">"role"</span>
+                  <span className="code-punct">: </span>
+                  <span className="code-val-str">"CS Graduate"</span>
+                  <span className="code-punct">,</span>
                 </span><br />
 
                 <span style={{ paddingLeft: 28 }}>
-                  <span style={{ color: '#F87171' }}>"university"</span>
-                  <span style={{ color: '#A8A29E' }}>: </span>
-                  <span style={{ color: '#86EFAC' }}>"COMSATS University Islamabad"</span>
-                  <span style={{ color: '#A8A29E' }}>,</span>
+                  <span className="code-key">"university"</span>
+                  <span className="code-punct">: </span>
+                  <span className="code-val-str">"COMSATS University Islamabad"</span>
+                  <span className="code-punct">,</span>
                 </span><br />
 
                 <span style={{ paddingLeft: 28 }}>
-                  <span style={{ color: '#F87171' }}>"semester"</span>
-                  <span style={{ color: '#A8A29E' }}>: </span>
-                  <span style={{ color: '#93C5FD' }}>8</span>
-                  <span style={{ color: '#A8A29E' }}>,</span>
+                  <span className="code-key">"semester"</span>
+                  <span className="code-punct">: </span>
+                  <span className="code-val-num">8</span>
+                  <span className="code-punct">,</span>
                 </span><br />
 
                 <span style={{ paddingLeft: 28 }}>
-                  <span style={{ color: '#F87171' }}>"location"</span>
-                  <span style={{ color: '#A8A29E' }}>: </span>
-                  <span style={{ color: '#86EFAC' }}>"Islamabad, PK"</span>
-                  <span style={{ color: '#A8A29E' }}>,</span>
+                  <span className="code-key">"location"</span>
+                  <span className="code-punct">: </span>
+                  <span className="code-val-str">"Islamabad, PK"</span>
+                  <span className="code-punct">,</span>
                 </span><br />
 
                 <span style={{ paddingLeft: 28 }}>
-                  <span style={{ color: '#F87171' }}>"focus"</span>
-                  <span style={{ color: '#A8A29E' }}>: [</span>
+                  <span className="code-key">"focus"</span>
+                  <span className="code-punct">: [</span>
                 </span><br />
 
                 {['AI Automation', 'Full Stack Dev', 'DevOps'].map((item, i, arr) => (
                   <span key={item} style={{ paddingLeft: 52, display: 'block' }}>
-                    <span style={{ color: '#86EFAC' }}>"{item}"</span>
-                    <span style={{ color: '#A8A29E' }}>{i < arr.length - 1 ? ',' : ''}</span>
+                    <span className="code-val-str">"{item}"</span>
+                    <span className="code-punct">{i < arr.length - 1 ? ',' : ''}</span>
                   </span>
                 ))}
 
                 <span style={{ paddingLeft: 28, display: 'block' }}>
-                  <span style={{ color: '#A8A29E' }}>],</span>
+                  <span className="code-punct">],</span>
                 </span><br />
 
                 <span style={{ paddingLeft: 28 }}>
-                  <span style={{ color: '#F87171' }}>"status"</span>
-                  <span style={{ color: '#A8A29E' }}>: </span>
-                  <span style={{ color: '#86EFAC' }}>"Open to Work ✓"</span>
+                  <span className="code-key">"status"</span>
+                  <span className="code-punct">: </span>
+                  <span className="code-val-str">"Open to Work ✓"</span>
                 </span><br />
 
-                <span style={{ color: '#A8A29E' }}>{'}'}</span>
+                <span className="code-punct">{'}'}</span>
               </div>
             </div>
           </div>
