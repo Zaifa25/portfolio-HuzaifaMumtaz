@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import useInView from '../hooks/useInView'
 import SectionTitle from './SectionTitle'
 import SERVICES from '../data/services'
+import '../styles/components.css'
 
 export default function Services() {
   const [ref, inView] = useInView()
 
   return (
-    <section id="services" style={{ padding: '7rem 2rem', position: 'relative', background: 'transparent' }} ref={ref}>
+    <section id="services" style={{ padding: '7rem 2rem', position: 'relative', background: 'transparent', zIndex: 2 }} ref={ref}>
       <div style={{
         position: 'absolute',
         bottom: 0, left: 0,
@@ -15,7 +16,7 @@ export default function Services() {
         background: 'linear-gradient(to right, transparent, rgba(214,199,178,0.1), transparent)',
       }} />
 
-      <div className="container">
+      <div className="container" style={{ position: 'relative', zIndex: 3 }}>
         <SectionTitle title="My Services" sub="What I offer" />
 
         <div style={{
@@ -39,19 +40,20 @@ function ServiceCard({ service, index, inView }) {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className="service-card hover-lift"
       style={{
         position: 'relative',
-        background: hovered ? 'rgba(255,255,255,0.045)' : 'var(--bg-card)',
-        border: `1px solid ${hovered ? 'rgba(214,199,178,0.18)' : 'rgba(255,255,255,0.08)'}`,
+        background: 'var(--bg-card)',
+        border: `1px solid ${hovered ? 'var(--border-hover)' : 'var(--border-strong)'}`,
         borderRadius: 8,
         padding: '2.2rem',
         overflow: 'hidden',
         cursor: 'default',
         transform: inView ? (hovered ? 'translateY(-5px)' : 'translateY(0)') : 'translateY(28px)',
         opacity: inView ? 1 : 0,
-        transition: `opacity 0.55s ease ${index * 0.1}s, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)`,
+        transition: `opacity 0.55s ease ${index * 0.1}s, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, background 0.35s ease`,
         backdropFilter: 'blur(8px)',
-        boxShadow: hovered ? '0 20px 60px rgba(0,0,0,0.4)' : 'none',
+        boxShadow: hovered ? '0 20px 60px rgba(0,0,0,0.15)' : 'none',
       }}
     >
       {/* Soft corner glow on hover */}
@@ -59,7 +61,7 @@ function ServiceCard({ service, index, inView }) {
         position: 'absolute',
         top: -60, right: -60,
         width: 160, height: 160,
-        background: 'radial-gradient(circle, rgba(214,199,178,0.07), transparent)',
+        background: 'radial-gradient(circle, var(--accent-glow), transparent)',
         opacity: hovered ? 1 : 0,
         transition: 'opacity 0.45s ease',
         borderRadius: '50%',
@@ -67,15 +69,18 @@ function ServiceCard({ service, index, inView }) {
       }} />
 
       {/* Icon box */}
-      <div style={{
-        width: 52, height: 52, borderRadius: 6,
-        background: 'rgba(255,255,255,0.04)',
-        border: `1px solid ${hovered ? 'rgba(214,199,178,0.2)' : 'rgba(255,255,255,0.08)'}`,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: 22, marginBottom: '1.4rem',
-        transition: 'all 0.35s ease',
-        opacity: 0.85,
-      }}>
+      <div
+        className="service-icon-box"
+        style={{
+          width: 52, height: 52, borderRadius: 6,
+          background: 'var(--bg-surface-2)',
+          border: `1px solid ${hovered ? 'var(--border-hover)' : 'var(--border-strong)'}`,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontSize: 22, marginBottom: '1.4rem',
+          transition: 'all 0.35s ease',
+          opacity: 0.9,
+        }}
+      >
         {service.icon}
       </div>
 
@@ -105,7 +110,7 @@ function ServiceCard({ service, index, inView }) {
         bottom: 0, left: 0,
         height: 1,
         width: hovered ? '100%' : 0,
-        background: 'linear-gradient(to right, rgba(214,199,178,0.4), rgba(168,162,158,0.2))',
+        background: 'var(--gradient-warm)',
         transition: 'width 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
       }} />
     </div>
