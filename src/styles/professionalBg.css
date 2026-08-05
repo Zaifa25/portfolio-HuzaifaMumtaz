@@ -22,27 +22,25 @@
 .bg-glow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
   pointer-events: none;
-  opacity: 0.15;
-  animation: ambientFloat 18s ease-in-out infinite alternate;
+  opacity: 0.8;
+  will-change: transform;
 }
 
 .orb-top-left {
-  top: -10%;
-  left: -5%;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(214, 199, 178, 0.8), transparent 70%);
+  top: -150px;
+  left: -150px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(214, 199, 178, 0.08) 0%, rgba(214, 199, 178, 0.02) 45%, transparent 70%);
 }
 
 .orb-bottom-right {
-  bottom: -15%;
-  right: -5%;
-  width: 650px;
-  height: 650px;
-  background: radial-gradient(circle, rgba(214, 199, 178, 0.6), transparent 70%);
-  animation-delay: 5s;
+  bottom: -150px;
+  right: -150px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(214, 199, 178, 0.06) 0%, rgba(214, 199, 178, 0.015) 45%, transparent 70%);
 }
 
 @keyframes ambientFloat {

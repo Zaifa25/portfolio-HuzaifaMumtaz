@@ -24,23 +24,23 @@ export default function ProfessionalBackground() {
 
     window.addEventListener('resize', handleResize, { passive: true })
 
-    // Particle constellation configuration (optimized count for 60fps)
-    const particleCount = Math.min(Math.floor(width / 32), 42)
+    // Particle constellation configuration (featherweight 28 particle pool)
+    const particleCount = Math.min(Math.floor(width / 45), 28)
     const particles = []
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        radius: Math.random() * 2 + 1,
-        alpha: Math.random() * 0.4 + 0.4,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 1.8 + 1,
+        alpha: Math.random() * 0.4 + 0.35,
       })
     }
 
     // Mouse tracking for interactive connection
-    let mouse = { x: null, y: null, maxDist: 150 }
+    let mouse = { x: null, y: null, maxDist: 140 }
 
     const handleMouseMove = (e) => {
       mouse.x = e.clientX
@@ -58,7 +58,7 @@ export default function ProfessionalBackground() {
     const draw = () => {
       ctx.clearRect(0, 0, width, height)
 
-      // Update & render particles (without expensive shadowBlur filters)
+      // Update & render particles
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i]
         p.x += p.vx
@@ -74,12 +74,6 @@ export default function ProfessionalBackground() {
         ctx.fillStyle = `rgba(214, 199, 178, ${p.alpha})`
         ctx.fill()
 
-        // Fast outer glow ring (zero CPU shadowBlur penalty)
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, p.radius * 2.2, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(214, 199, 178, ${p.alpha * 0.18})`
-        ctx.fill()
-
         // Connect nearby particles
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j]
@@ -87,13 +81,13 @@ export default function ProfessionalBackground() {
           const dy = p.y - p2.y
           const dist = Math.sqrt(dx * dx + dy * dy)
 
-          if (dist < 115) {
-            const lineAlpha = (1 - dist / 115) * 0.28
+          if (dist < 100) {
+            const lineAlpha = (1 - dist / 100) * 0.25
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(p2.x, p2.y)
             ctx.strokeStyle = `rgba(214, 199, 178, ${lineAlpha})`
-            ctx.lineWidth = 0.9
+            ctx.lineWidth = 0.8
             ctx.stroke()
           }
         }
@@ -105,12 +99,12 @@ export default function ProfessionalBackground() {
           const mdist = Math.sqrt(mdx * mdx + mdy * mdy)
 
           if (mdist < mouse.maxDist) {
-            const mLineAlpha = (1 - mdist / mouse.maxDist) * 0.55
+            const mLineAlpha = (1 - mdist / mouse.maxDist) * 0.45
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(mouse.x, mouse.y)
             ctx.strokeStyle = `rgba(214, 199, 178, ${mLineAlpha})`
-            ctx.lineWidth = 1.2
+            ctx.lineWidth = 1
             ctx.stroke()
           }
         }
