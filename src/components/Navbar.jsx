@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { FaSun, FaMoon } from 'react-icons/fa6'
 import '../styles/navbar.css'
 import '../styles/components.css'
 
-export default function Navbar({ active, navLinks }) {
+export default function Navbar({ active, navLinks, theme, toggleTheme }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -37,15 +38,37 @@ export default function Navbar({ active, navLinks }) {
               {link}
             </button>
           ))}
+
+          {/* Theme Toggle Button */}
+          <button
+            className="theme-toggle-btn"
+            onClick={toggleTheme}
+            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+            aria-label="Toggle theme mode"
+          >
+            {theme === 'dark' ? <FaSun className="theme-icon sun" /> : <FaMoon className="theme-icon moon" />}
+          </button>
         </div>
 
-        <button
-          className="hamburger"
-          onClick={() => setMenuOpen(o => !o)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? '✕' : '☰'}
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          {/* Mobile Theme Toggle Button */}
+          <button
+            className="theme-toggle-btn mobile-theme-btn"
+            onClick={toggleTheme}
+            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+            aria-label="Toggle theme mode"
+          >
+            {theme === 'dark' ? <FaSun className="theme-icon sun" /> : <FaMoon className="theme-icon moon" />}
+          </button>
+
+          <button
+            className="hamburger"
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? '✕' : '☰'}
+          </button>
+        </div>
       </div>
 
       {menuOpen && (

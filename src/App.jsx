@@ -17,6 +17,18 @@ const NAV_LINKS = ['Home', 'About', 'Experience', 'Achievements', 'Skills', 'Pro
 
 export default function App() {
   const [active, setActive] = useState('home')
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme_preference') || 'dark'
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme_preference', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme(t => (t === 'dark' ? 'light' : 'dark'))
+  }
 
   useEffect(() => {
     const observers = []
@@ -38,7 +50,7 @@ export default function App() {
       {/* ── Ultra-Professional Interactive Constellation & Ambient Light Overlay ── */}
       <ProfessionalBackground />
 
-      <Navbar active={active} navLinks={NAV_LINKS} />
+      <Navbar active={active} navLinks={NAV_LINKS} theme={theme} toggleTheme={toggleTheme} />
       <main style={{ position: 'relative', zIndex: 1 }}>
         {/* ── Hero ── */}
         <Hero />

@@ -61,11 +61,14 @@ export default function ProfessionalBackground() {
     const draw = () => {
       ctx.clearRect(0, 0, width, height)
 
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light'
+      const rgb = isLight ? '184, 115, 34' : '214, 199, 178'
+
       // Render interactive mouse spotlight aura
       if (mouse.x !== null && mouse.y !== null) {
         const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 260)
-        gradient.addColorStop(0, 'rgba(214, 199, 178, 0.09)')
-        gradient.addColorStop(0.5, 'rgba(214, 199, 178, 0.025)')
+        gradient.addColorStop(0, `rgba(${rgb}, 0.09)`)
+        gradient.addColorStop(0.5, `rgba(${rgb}, 0.025)`)
         gradient.addColorStop(1, 'rgba(0, 0, 0, 0)')
         ctx.fillStyle = gradient
         ctx.fillRect(0, 0, width, height)
@@ -85,7 +88,7 @@ export default function ProfessionalBackground() {
         // Core dot node
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(214, 199, 178, ${p.alpha})`
+        ctx.fillStyle = `rgba(${rgb}, ${p.alpha})`
         ctx.fill()
 
         // Outer soft glow halo for pulse nodes
@@ -93,7 +96,7 @@ export default function ProfessionalBackground() {
           const pulseScale = 1 + Math.sin(p.pulseAngle) * 0.35
           ctx.beginPath()
           ctx.arc(p.x, p.y, p.radius * 2.4 * pulseScale, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(214, 199, 178, ${p.alpha * 0.22})`
+          ctx.fillStyle = `rgba(${rgb}, ${p.alpha * 0.22})`
           ctx.fill()
         }
 
@@ -109,7 +112,7 @@ export default function ProfessionalBackground() {
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = `rgba(214, 199, 178, ${lineAlpha})`
+            ctx.strokeStyle = `rgba(${rgb}, ${lineAlpha})`
             ctx.lineWidth = 0.8
             ctx.stroke()
           }
@@ -126,7 +129,7 @@ export default function ProfessionalBackground() {
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(mouse.x, mouse.y)
-            ctx.strokeStyle = `rgba(214, 199, 178, ${mLineAlpha})`
+            ctx.strokeStyle = `rgba(${rgb}, ${mLineAlpha})`
             ctx.lineWidth = 1.1
             ctx.stroke()
           }
