@@ -84,7 +84,7 @@ export default function Contact() {
 }
 
   return (
-    <section id="contact" style={{ padding: '7rem 2rem', position: 'relative', background: 'transparent' }} ref={ref}>
+    <section id="contact" style={{ padding: '7rem 2rem', position: 'relative', background: 'transparent', zIndex: 2 }} ref={ref}>
       <div style={{
         position: 'absolute',
         bottom: '20%', right: 0,
@@ -93,7 +93,7 @@ export default function Contact() {
         pointerEvents: 'none',
       }} />
 
-      <div className="container">
+      <div className="container" style={{ position: 'relative', zIndex: 3 }}>
         <SectionTitle title="Get In Touch" sub="Let's build something great" />
 
         <div style={{
@@ -176,10 +176,12 @@ export default function Contact() {
               <form
                 onSubmit={handleSubmit}
                 style={{
-                  background: 'var(--bg-card)',
+                  background: 'var(--bg-surface-2)',
                   border: '1px solid var(--border)',
                   borderRadius: 8, padding: '2.2rem',
-                  backdropFilter: 'blur(8px)',
+                  backdropFilter: 'blur(12px)',
+                  position: 'relative',
+                  zIndex: 4,
                 }}
               >
                 {[

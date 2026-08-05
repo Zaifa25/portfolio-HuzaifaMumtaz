@@ -23,6 +23,7 @@ export default function About() {
       padding: '7rem 2rem',
       background: 'transparent',
       position: 'relative',
+      zIndex: 2,
     }}>
       {/* Subtle side accent */}
       <div style={{
@@ -34,7 +35,7 @@ export default function About() {
         opacity: 0.5,
       }} />
 
-      <div className="container">
+      <div className="container" style={{ position: 'relative', zIndex: 3 }}>
         <SectionTitle title="About Me" sub="Who I am & what I do" />
 
         <div style={{
