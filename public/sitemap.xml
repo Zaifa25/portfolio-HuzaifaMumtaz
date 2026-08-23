@@ -2,29 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://zaifa25.github.io/portfolio-HuzaifaMumtaz/</loc>
+    <loc>https://www.huzaifamumtaz.online/</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://zaifa25.github.io/portfolio-HuzaifaMumtaz/assets/profile.jpg</image:loc>
-      <image:title>Huzaifa Mumtaz - Full Stack Web Developer &amp; AI Automation Enthusiast</image:title>
-      <image:caption>Huzaifa Mumtaz Portfolio Profile</image:caption>
+      <image:loc>https://www.huzaifamumtaz.online/assets/profile.jpg</image:loc>
+      <image:title>Huzaifa Mumtaz - Full Stack Web Developer &amp; AI Automation Specialist</image:title>
+      <image:caption>Huzaifa Mumtaz Portfolio Official Image</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://zaifa25.github.io/portfolio-HuzaifaMumtaz/assets/project7.png</image:loc>
-      <image:title>Hospital Management System - Next.js &amp; PostgreSQL</image:title>
-      <image:caption>Modern Full-Stack Hospital Management System by Huzaifa Mumtaz</image:caption>
+      <image:loc>https://www.huzaifamumtaz.online/assets/project7.png</image:loc>
+      <image:title>Hospital Management System by Huzaifa Mumtaz</image:title>
+      <image:caption>Full-Stack Hospital Management System by Huzaifa Mumtaz</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://zaifa25.github.io/portfolio-HuzaifaMumtaz/assets/project9.png</image:loc>
-      <image:title>Google Maps Leads Extractor - Chrome Extension</image:title>
-      <image:caption>Automated Lead Generation Tool by Huzaifa Mumtaz</image:caption>
+      <image:loc>https://www.huzaifamumtaz.online/assets/project9.png</image:loc>
+      <image:title>Google Maps Leads Extractor by Huzaifa Mumtaz</image:title>
+      <image:caption>Lead Generation Tool by Huzaifa Mumtaz</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://zaifa25.github.io/portfolio-HuzaifaMumtaz/assets/project12.png</image:loc>
-      <image:title>n8n Google Sheet Automation Workflow</image:title>
-      <image:caption>Automated workflow pipeline built with n8n and Google APIs</image:caption>
+      <image:loc>https://www.huzaifamumtaz.online/assets/project12.png</image:loc>
+      <image:title>n8n Automation Workflow by Huzaifa Mumtaz</image:title>
+      <image:caption>Automated workflow pipeline by Huzaifa Mumtaz</image:caption>
     </image:image>
   </url>
 </urlset>
