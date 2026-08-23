@@ -1,0 +1,19 @@
+{
+  "name": "Huzaifa Mumtaz | Full Stack Web Developer & AI Automation",
+  "short_name": "Huzaifa Mumtaz",
+  "description": "Portfolio of Huzaifa Mumtaz — Full Stack Web Developer & AI Automation Enthusiast building high-performance web applications, intelligent automation pipelines, and custom software.",
+  "start_url": "/portfolio-HuzaifaMumtaz/",
+  "scope": "/portfolio-HuzaifaMumtaz/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#c9944a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/portfolio-HuzaifaMumtaz/favicon.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -144,7 +144,7 @@ export default function Hero() {
               <div className="avatar-circle">
                 <img
                   src="/assets/profile.jpg"
-                  alt="Huzaifa Mumtaz — Full Stack Developer"
+                  alt="Huzaifa Mumtaz — Full Stack Web Developer and AI Automation Specialist"
                   loading="eager"
                   decoding="async"
                   width="400"

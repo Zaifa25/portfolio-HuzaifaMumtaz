@@ -166,7 +166,7 @@ export default function Projects() {
               <div className="project-image-wrapper">
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} - ${project.category} Project by Huzaifa Mumtaz`}
                   className="project-image"
                   loading="lazy"
                   decoding="async"
@@ -268,7 +268,11 @@ export default function Projects() {
             </button>
 
             <div className="modal-image-wrapper">
-              <img src={selectedProject.image} alt={selectedProject.title} className="modal-image" />
+              <img
+                src={selectedProject.image}
+                alt={`${selectedProject.title} - ${selectedProject.category} Showcase by Huzaifa Mumtaz`}
+                className="modal-image"
+              />
               <div className="modal-category-badge">
                 {CATEGORY_ICONS[selectedProject.category]} {selectedProject.category}
               </div>
